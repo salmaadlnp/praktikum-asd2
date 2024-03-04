@@ -107,32 +107,55 @@ class LinkedListSkincare:
 if __name__ == "__main__":
     toko = LinkedListSkincare()
 
-    # Menambahkan beberapa skincare
-    skincare1 = Skincare(1, "Cleanser", "Cleanser", 50000, 10)
-    skincare2 = Skincare(2, "Moisturizer", "Moisturizer", 155000, 15)
-    skincare3 = Skincare(3, "Serum", "Serum", 200000, 8)
-    skincare4 = Skincare(4, "Sunscreen", "Sunscreen", 100000, 20)
-    skincare5 = Skincare(5, "Lip balm", "Lip balm", 20000, 5)
-    skincare6 = Skincare(6, "Eye Serum", "Eye Serum", 200000, 5)
+    while True:
+        print("\nMenu:")
+        print("1. Tambah barang di awal")
+        print("2. Tambah barang di akhir")
+        print("3. Tambah barang di antara node")
+        print("4. Hapus barang di awal")
+        print("5. Hapus barang di akhir")
+        print("6. Hapus barang di antara node")
+        print("7. Lihat barang")
+        print("8. Keluar")
 
-    toko.tambah_skincare_awal(skincare1)
-    toko.tambah_skincare_akhir(skincare2)
-    toko.tambah_skincare_akhir(skincare3)
-    toko.tambah_skincare_akhir(skincare4)
-    toko.tambah_skincare_diantara(skincare5, 3) # Menambahkan setelah skincare dengan ID 3
-    toko.tambah_skincare_diantara(skincare6, 5) # Menambahkan setelah skincare dengan ID 5
+        pilihan = input("Masukkan pilihan Anda: ")
 
-    # Menampilkan daftar skincare
-    toko.tampilkan_skincare()
-
-    # Mengupdate harga skincare dengan ID 1
-    toko.update_skincare(1, "harga", 120000)
-
-    # Menampilkan daftar skincare setelah pembaharuan
-    toko.tampilkan_skincare()
-
-    # Menghapus skincare dengan ID 2
-    toko.hapus_skincare_diantara(2)
-
-    # Menampilkan daftar skincare setelah penghapusan
-    toko.tampilkan_skincare()
+        if pilihan == "1":
+            id = int(input("Masukkan ID: "))
+            nama = input("Masukkan Nama: ")
+            jenis = input("Masukkan Jenis: ")
+            harga = int(input("Masukkan Harga: "))
+            stok = int(input("Masukkan Stok: "))
+            skincare = Skincare(id, nama, jenis, harga, stok)
+            toko.tambah_skincare_awal(skincare)
+        elif pilihan == "2":
+            id = int(input("Masukkan ID: "))
+            nama = input("Masukkan Nama: ")
+            jenis = input("Masukkan Jenis: ")
+            harga = int(input("Masukkan Harga: "))
+            stok = int(input("Masukkan Stok: "))
+            skincare = Skincare(id, nama, jenis, harga, stok)
+            toko.tambah_skincare_akhir(skincare)
+        elif pilihan == "3":
+            id_sebelumnya = int(input("Masukkan ID sebelumnya: "))
+            id = int(input("Masukkan ID: "))
+            nama = input("Masukkan Nama: ")
+            jenis = input("Masukkan Jenis: ")
+            harga = int(input("Masukkan Harga: "))
+            stok = int(input("Masukkan Stok: "))
+            skincare = Skincare(id, nama, jenis, harga, stok)
+            toko.tambah_skincare_diantara(skincare, id_sebelumnya)
+        elif pilihan == "4":
+            toko.hapus_skincare_awal()
+        elif pilihan == "5":
+            toko.hapus_skincare_akhir()
+        elif pilihan == "6":
+            id_sebelumnya = int(input("Masukkan ID sebelumnya: "))
+            toko.hapus_skincare_diantara(id_sebelumnya)
+        elif pilihan == "7":
+            toko.tampilkan_skincare()
+        elif pilihan == "8":
+            print("Terima kasih!")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
